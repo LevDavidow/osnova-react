@@ -104,15 +104,24 @@ describe('Catalog container filtration', () => {
     const state = [
       {
         id: 1,
-        category: [1,2]
+        categories: [{
+          id: 1
+        },
+        {
+          id: 2
+        }]
       },
       {
         id: 2,
-        category: [2]
+        categories: [{
+          id: 2
+        }]
       },
        {
         id: 3,
-        category: [1]
+        categories: [{
+          id: 1
+        }]
       }
     ] 
 
@@ -122,11 +131,18 @@ describe('Catalog container filtration', () => {
 
     expect(func.applyFilterWithoutPage(state, filter)).to.deep.equal([{
         id: 1,
-        category: [1,2]
+        categories: [{
+          id: 1
+        },
+        {
+          id: 2
+        }]
       },
        {
         id: 3,
-        category: [1]
+        categories: [{
+          id: 1
+        }]
       }]);
 
   });
@@ -135,15 +151,21 @@ describe('Catalog container filtration', () => {
     const state = [
       {
         id: 1,
-        vendor: 1
+        vendor: {
+          id: 1,
+        }
       },
       {
         id: 2,
-        vendor: 2
+        vendor: {
+          id: 2
+        }
       },
        {
         id: 3,
-        vendor: 1
+        vendor: {
+          id: 1
+        }
       }
     ] 
 
@@ -153,11 +175,15 @@ describe('Catalog container filtration', () => {
 
     expect(func.applyFilterWithoutPage(state, filter)).to.deep.equal([{
         id: 1,
-        vendor: 1
+        vendor: {
+          id: 1
+        }
       },
        {
         id: 3,
-        vendor: 1
+        vendor: {
+          id: 1
+        }
       }]);
 
   });

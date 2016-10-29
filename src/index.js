@@ -41,8 +41,6 @@ function getCookie(name) {
 }
 options.CACHE_URL = getCookie('RZ_CACHE_URL')
 
-
-
 //Async loading css
 
 //loadCSS(options.CSS_URL);
@@ -63,8 +61,6 @@ const entryPoint = (store) => {
 }
 
 //Loading previously persisted data;
-//Зарезолвилть промис из инициализации.
-
 
 Promise.all([
 //  loadJS('https://yastatic.net/share2/share.js'),

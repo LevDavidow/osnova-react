@@ -6,7 +6,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Catalog from '../components/Catalog/Catalog';
 
-
+/**
+ * @param  {array} state - products
+ * @param  {object} filters - object of filters. 
+ * @return {Array} products - Products width applied filters
+ */
 const applyFilterWithoutPage = (state, filters) =>  {
   let products = state.map(product => product);
   
@@ -39,6 +43,12 @@ const applyFilterWithoutPage = (state, filters) =>  {
   return products || [];
 }
 
+/**
+ * @param  {array} oldState -products
+ * @param  {object} filters - object of sorts. 
+ * @return {Array} products - Products width applied sort
+ */
+
 const applySort = (oldState, sort) => {
   //Добавим иммутабельности
   const state = oldState.map(item => item);
@@ -68,6 +78,12 @@ const applySort = (oldState, sort) => {
   }
 }
 
+/**
+ * @param  {Array} - pruducts
+ * @param  {number} - current page of pagination
+ * @param  {number} - how many products per Page
+ * @return {Array} - sliced products of current page
+ */
 const applyPage = (state, page, perPage) => {
   //Применение пагинации по базовому варианту.
   return state.slice(perPage * page  - perPage, page * perPage);
@@ -85,10 +101,15 @@ const calcTotalPages = (state, perPage) => {
   return Math.round(result + 1);
 }
 
-const getRescentProducts = (state, olDrescent) => {
-  let rescent = olDrescent || []; 
+
+/**
+ * @param  {[]} - all products {..., id: number}
+ * @param  {[]} - rescent products Ids
+ * @return {[]} - rescent products items
+ */
+const getRescentProducts = (state, rescentIds = []) => {
   return state.filter(product => 
-                rescent.some(id => id === product.id));
+                rescentIds.some(id => id === product.id));
 }
 
 function mapStateToProps(state) {

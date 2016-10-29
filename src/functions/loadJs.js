@@ -3,7 +3,6 @@ const loadJS = (url) => {
     
     const injectedScript = document.createElement('script');
     
-
     const myRequest = new XMLHttpRequest();
     myRequest.onreadystatechange = function() {
       if (myRequest.readyState == 4 && myRequest.status == 200)   {
@@ -14,6 +13,6 @@ const loadJS = (url) => {
     myRequest.open('GET', url, true);
     myRequest.overrideMimeType('application/javascript');
     myRequest.send();
-}
+})}
 
 export default loadJS;
