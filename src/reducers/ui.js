@@ -10,11 +10,13 @@ import {
   SET_CATEGORY,
   TOGGLE_FILTER,
   SET_SEARCH_QUERY,
-  SET_PAGE,
+  SET_FILTER_PAGE,
   DISABLE_MODAL_CLOSING,
   ENABLE_MODAL_CLOSING,
   TOGGLE_APPLICATION_FORM
 } from '../actions/const';
+
+import scrollToTop from '../functions/scrollToTop';
 
 const initialState = {
   categoryMenuToggled: null,
@@ -24,8 +26,6 @@ const initialState = {
   applicationFormToggled: false,
   filterToggled: false,
 };
-
-const scrollToTop = require('../functions/scrollToTop');
 
 const toggleCategoryMenu = (state, action) => {
   if (state.categoryMenuToggled === action.id) {
@@ -81,7 +81,7 @@ module.exports = function(state = initialState, action) {
         filterToggled: !state.filterToggled
       }
     }
-    case SET_PAGE: {
+    case SET_FILTER_PAGE: {
       scrollToTop();
       return state;
     }
